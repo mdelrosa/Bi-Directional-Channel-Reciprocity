@@ -51,13 +51,14 @@ mag = mag + min(HD_mag1(:));
 
 %% Magnitude dependent phase quantization and dequantization
 unquan_flag = 1;% 1: no quantization 0: magnitude dependent phase quantization (MDPQ)
-step_length = 2*pi/16;%6bit
+step_length = 2*pi/16;%4bit
 if unquan_flag == 1
     Step_qua = 1000*ones(30000,half);
 else
     Step_qua = 8*ones(30000,half);
     %magnitudes corresponding to CDF value of 0.5, 0.7, 0.8, and 0.9, respectively. 
-    %randomly position UEs
+    %UEs are randomly positioned in the square area in simulation. Base station is positioned at the center of the square area. 
+    %This way causes more CSI in small magnitude.
     ancher4 = 0.50725;
     ancher3 = 0.5036;
     ancher2 = 0.50225;
